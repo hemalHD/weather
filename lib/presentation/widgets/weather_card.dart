@@ -14,14 +14,14 @@ class WeatherCard extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(weather.city, style: Theme.of(context).textTheme.headline6),
-            Text('${weather.temperature}°C', style: Theme.of(context).textTheme.headline3),
+            Text(weather.city, style: Theme.of(context).textTheme.headlineMedium),
+            Text('${weather.temperature}°C', style: Theme.of(context).textTheme.headlineMedium),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.network('https://openweathermap.org/img/wn/${weather.icon}@2x.png', width: 50),
                 const SizedBox(width: 8),
-                Text(weather.condition, style: Theme.of(context).textTheme.subtitle1),
+                Text(weather.condition, style: Theme.of(context).textTheme.headlineMedium),
               ],
             ),
             Text('Humidity: ${weather.humidity}%'),

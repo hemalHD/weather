@@ -6,14 +6,24 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:weather/core/network/dio_client.dart';
+import 'package:weather/data/datasources/weather_remote_data_source.dart';
+import 'package:weather/data/repositories/weather_repository_impl.dart';
 
 import 'package:weather/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    WidgetsFlutterBinding.ensureInitialized();
+    await dotenv.load();
+    final dio = DioClient().dio;
+    final remoteDataSource = WeatherRemoteDataSource(dio);
+    final repository = WeatherRepositoryImpl(remoteDataSource);
+
+    await tester.pumpWidget(MyApp(repository: repository));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

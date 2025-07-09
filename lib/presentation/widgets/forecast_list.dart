@@ -22,7 +22,7 @@ class ForecastList extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('${weather.date.month}/${weather.date.day}', style: Theme.of(context).textTheme.subtitle1),
+                  Text('${weather.date.month}/${weather.date.day}', style: Theme.of(context).textTheme.labelMedium),
                   Image.network('https://openweathermap.org/img/wn/${weather.icon}@2x.png', width: 40),
                   Text('${weather.temperature}°C'),
                   Text(weather.condition),
