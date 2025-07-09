@@ -39,9 +39,9 @@ BLoC provides advanced state management, testability, and separation of concerns
 ## Setup Instructions
 1. Clone the repo
 2. Run `flutter pub get`
-3. Create a `.env` file in the root:
-   ```
-   OPENWEATHER_API_KEY=your_openweathermap_api_key_here
+3. Add your OpenWeatherMap API key in `lib/data/datasources/weather_remote_data_source.dart`:
+   ```dart
+   final String _apiKey = 'YOUR_ACTUAL_API_KEY_HERE';
    ```
 4. Run the app:
    ```

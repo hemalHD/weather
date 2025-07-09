@@ -1,7 +1,6 @@
 // Entry point for Weather app. Will be updated to use Clean Architecture + BLoC.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'core/network/dio_client.dart';
 import 'data/datasources/weather_remote_data_source.dart';
 import 'data/repositories/weather_repository_impl.dart';
@@ -13,7 +12,6 @@ import 'presentation/pages/map_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
   final dio = DioClient().dio;
   final remoteDataSource = WeatherRemoteDataSource(dio);
   final repository = WeatherRepositoryImpl(remoteDataSource);
