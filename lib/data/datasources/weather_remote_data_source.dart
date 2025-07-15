@@ -8,8 +8,7 @@ class WeatherRemoteDataSource {
   WeatherRemoteDataSource(this.dio);
 
   final String _baseUrl = 'https://api.openweathermap.org/data/2.5';
-  // Replace this with your actual OpenWeatherMap API key
-  final String _apiKey = 'YOUR_OPENWEATHERMAP_API_KEY_HERE';
+  final String _apiKey = '2de32be03790847581ba8560c7dea935';
 
   Future<WeatherModel> getCurrentWeather({required double lat, required double lon}) async {
     final response = await dio.get(

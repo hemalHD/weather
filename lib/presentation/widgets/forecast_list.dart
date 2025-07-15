@@ -26,6 +26,7 @@ class ForecastList extends StatelessWidget {
                   Image.network('https://openweathermap.org/img/wn/${weather.icon}@2x.png', width: 40),
                   Text('${weather.temperature}°C'),
                   Text(weather.condition),
+                  Text('${weather.date.hour.toString()}:${weather.date.minute.toString()}'),
                 ],
               ),
             ),
