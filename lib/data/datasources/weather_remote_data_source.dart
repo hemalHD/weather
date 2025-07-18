@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import '../models/weather_model.dart';
 import '../models/forecast_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class WeatherRemoteDataSource {
   final Dio dio;
@@ -8,7 +9,7 @@ class WeatherRemoteDataSource {
   WeatherRemoteDataSource(this.dio);
 
   final String _baseUrl = 'https://api.openweathermap.org/data/2.5';
-  final String _apiKey = '2de32be03790847581ba8560c7dea935';
+  final String _apiKey = dotenv.env['OPENWEATHER_API_KEY']!;
 
   Future<WeatherModel> getCurrentWeather({required double lat, required double lon}) async {
     final response = await dio.get(

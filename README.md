@@ -47,17 +47,24 @@ lib/
 ## Setup Instructions
 1. Clone the repo
 2. Run `flutter pub get`
-3. Add your OpenWeatherMap API key in `lib/data/datasources/weather_remote_data_source.dart`:
-   ```dart
-   final String _apiKey = 'YOUR_ACTUAL_API_KEY_HERE';
+3. Add your OpenWeatherMap and Google Maps API keys in a `.env` file at the project root:
+   ```env
+   OPENWEATHER_API_KEY=your_openweather_api_key_here
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
    ```
-4. Add your Google Maps API key:
+4. The `.env` file is already in `.gitignore` and will not be committed to version control.
+5. The app loads environment variables using [flutter_dotenv](https://pub.dev/packages/flutter_dotenv). You can access your API keys in Dart like this:
+   ```dart
+   import 'package:flutter_dotenv/flutter_dotenv.dart';
+   final String apiKey = dotenv.env['OPENWEATHER_API_KEY']!;
+   ```
+6. Add your Google Maps API key to the native config files as needed:
    - **Android:** In `android/app/src/main/AndroidManifest.xml` inside `<application>`:
      ```xml
      <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_API_KEY_HERE"/>
      ```
    - **iOS:** In `ios/Runner/AppDelegate.swift` or via Info.plist if needed.
-5. Set up location permissions:
+7. Set up location permissions:
    - **Android:** In `android/app/src/main/AndroidManifest.xml`:
      ```xml
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -70,7 +77,7 @@ lib/
      <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
      <string>This app needs your location to show the weather for your area even when the app is in the background.</string>
      ```
-6. Run the app:
+8. Run the app:
    ```
    flutter run
    ```
