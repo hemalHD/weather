@@ -77,15 +77,17 @@ class _HomePageState extends State<HomePage> {
                   if (state is WeatherLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is WeatherLoaded) {
-                    return Column(
-                      children: [
-                        WeatherCard(weather: state.weather),
-                        ForecastList(forecast: state.forecast),
-                        ElevatedButton(
-                          onPressed: () => Navigator.pushNamed(context, '/map'),
-                          child: const Text('Open Map'),
-                        ),
-                      ],
+                    return SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          WeatherCard(weather: state.weather),
+                          ElevatedButton(
+                            onPressed: () => Navigator.pushNamed(context, '/map'),
+                            child: const Text('Open Map'),
+                          ),
+                          ForecastList(forecast: state.forecast),
+                        ],
+                      ),
                     );
                   } else if (state is WeatherError) {
                     return Center(child: Text(state.message));
